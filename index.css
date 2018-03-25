@@ -1,0 +1,9 @@
+.hidden {
+	display: none;
+}
+
+body.noscroll {
+	position: fixed;
+	left: 0;
+	right: 0;
+}

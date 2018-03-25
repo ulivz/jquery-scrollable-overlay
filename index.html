@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Scrollable Overlay</title>
+	<link rel="stylesheet" href="./index.css">
+	<style>
+		body {
+			font-family: Arial;
+		}
+
+		.item {
+			height: 30vh;
+		}
+
+		.item1 {
+			background-color: #B1C7CE;
+		}
+
+		.item2 {
+			background-color: #4A4C63;
+		}
+
+		.item3 {
+			background-color: #2BC0A9;
+		}
+
+		.item4 {
+			background-color: #EEC3AB;
+		}
+
+		.item5 {
+			background-color: #EBD7B5;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.overlay {
+			padding: 4vw 4vw 4vw 4vw;
+			box-sizing: border-box;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background-color: rgba(0, 0, 0, .5);
+		}
+
+		#overlay {
+			color: white;
+			overflow: scroll;
+			line-height: 30px;
+		}
+
+		#overlay .content {
+
+		}
+
+		#close {
+			position: fixed;
+			top: 4vw;
+			right: 4vw;
+			cursor: pointer;
+			text-align: right;
+			margin-bottom: 10px;
+			font-size: 30px;
+		}
+
+		#btn {
+			position: fixed;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			width: 120px;
+			height: 50px;
+			background-color: white;
+			margin: auto;
+			color: #666;
+			border-radius: 10px;
+			outline: none;
+		}
+
+		body.noscroll {
+			position: fixed;
+			left: 0;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+<div id="app">
+	<div class="item item1"></div>
+	<div class="item item2"></div>
+	<div class="item item3"></div>
+	<div class="item item4"></div>
+	<div class="item item5"></div>
+	<button id="btn">OPEN OVERLAY</button>
+</div>
+
+<div id="overlay" class="overlay hidden">
+	<div id="close">CLOSE</div>
+	<ul class="content">
+		<li>== START ==</li>
+		<li>Trump replaces H.R. McMaster with John Bolton as national security adviser</li>
+		<li>Opinion: John Bolton's mustache is more qualified than he is</li>
+		<li>Mudd: 'Aggressive' Bolton a WH risk</li>
+		<li>Protesters block NBA arena over fatal Sacramento police shooting</li>
+		<li>McConnell laughs off Corker's jab</li>
+		<li>Report: Saudi crown prince bragged that Kushner was 'in his pocket'</li>
+		<li>Maryland school shooting victim to be taken off life support, family says</li>
+		<li>Bannon: If Kelly goes, replacement unlikely</li>
+		<li>McConnell laughs off Corker's jab</li>
+		<li>Report: Saudi crown prince bragged that Kushner was 'in his pocket'</li>
+		<li>Maryland school shooting victim to be taken off life support, family says</li>
+		<li>Bannon: If Kelly goes, replacement unlikely</li>
+		<li>Opinion: It's too early to say whether 'troubled young man' is the wrong term for the Austin bomber</li>
+		<li>Toys 'R' Us founder dies at age 94</li>
+		<li>Elizabeth Warren spars with Ben Carson: This should get you fired</li>
+		<li>Trump replaces H.R. McMaster with John Bolton as national security adviser</li>
+		<li>Opinion: John Bolton's mustache is more qualified than he is</li>
+		<li>Mudd: 'Aggressive' Bolton a WH risk</li>
+		<li>Maryland school shooting victim to be taken off life support, family says</li>
+		<li>Mudd: 'Aggressive' Bolton a WH risk</li>
+		<li>Protesters block NBA arena over fatal Sacramento police shooting</li>
+		<li>McConnell laughs off Corker's jab</li>
+		<li>Report: Saudi crown prince bragged that Kushner was 'in his pocket'</li>
+		<li>Maryland school shooting victim to be taken off life support, family says</li>
+		<li>Bannon: If Kelly goes, replacement unlikely</li>
+		<li>McConnell laughs off Corker's jab</li>
+		<li>Report: Saudi crown prince bragged that Kushner was 'in his pocket'</li>
+		<li>Maryland school shooting victim to be taken off life support, family says</li>
+		<li>Bannon: If Kelly goes, replacement unlikely</li>
+		<li>Opinion: It's too early to say whether 'troubled young man' is the wrong term for the Austin bomber</li>
+		<li>Toys 'R' Us founder dies at age 94</li>
+		<li>Elizabeth Warren spars with Ben Carson: This should get you fired</li>
+		<li>Trump replaces H.R. McMaster with John Bolton as national security adviser</li>
+		<li>Opinion: John Bolton's mustache is more qualified than he is</li>
+		<li>Mudd: 'Aggressive' Bolton a WH risk</li>
+		<li>Maryland school shooting victim to be taken off life support, family says</li>
+		<li>Report: Saudi crown prince bragged that Kushner was 'in his pocket'</li>
+		<li>Maryland school shooting victim to be taken off life support, family says</li>
+		<li>Bannon: If Kelly goes, replacement unlikely</li>
+		<li>McConnell laughs off Corker's jab</li>
+		<li>Report: Saudi crown prince bragged that Kushner was 'in his pocket'</li>
+		<li>Maryland school shooting victim to be taken off life support, family says</li>
+		<li>Bannon: If Kelly goes, replacement unlikely</li>
+		<li>Opinion: It's too early to say whether 'troubled young man' is the wrong term for the Austin bomber</li>
+		<li>Toys 'R' Us founder dies at age 94</li>
+		<li>Elizabeth Warren spars with Ben Carson: This should get you fired</li>
+		<li>Trump replaces H.R. McMaster with John Bolton as national security adviser</li>
+		<li>Opinion: John Bolton's mustache is more qualified than he is</li>
+		<li>Mudd: 'Aggressive' Bolton a WH risk</li>
+		<li>Maryland school shooting victim to be taken off life support, family says</li>
+		<li>== END ==</li>
+	</ul>
+</div>
+
+<script src="http://unpkg.com/jquery"></script>
+<script src="./index.js"></script>
+<script>
+	const button = $('#btn')
+	const overlay = $('#overlay')
+	overlay.scrollableOverlay()
+
+	const close = $('#close')
+	const body = $('body')
+	button.on('click', () => {
+		overlay.trigger('show')
+	})
+
+	close.on('click', () => {
+		overlay.trigger('hide')
+	})
+</script>
+</body>
+</html>
