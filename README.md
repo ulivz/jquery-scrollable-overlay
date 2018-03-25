@@ -1,8 +1,8 @@
 # jquery-scrollable-overlay
 
-This library doesn't care how you implement your overlay. It only does one thing: when your popup overlay can slide, it disables the background scroll instead.
+This plugin doesn't care the implementation of your overlay, it only does one thing: when your popup overlay is scrollable, it disables the background scroll anyway.
 
-The key is that in order to be compatible with hateful **iOS** devices, special handling has also been done.
+The key is that this lib is also compatible with hateful **iOS** devices.
 
 # Usage
 
