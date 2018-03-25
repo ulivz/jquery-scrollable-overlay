@@ -1,7 +1,8 @@
 # jquery-scrollable-overlay
 
-This library doesn't care how you implement your overlay. It only does one thing. When your popup overlay can slide, it disables the background slide and is compatible with iOS and other mobile devices.
+This library doesn't care how you implement your overlay. It only does one thing: when your popup overlay can slide, it disables the background scroll instead.
 
+The key is that in order to be compatible with hateful **iOS** devices, special handling has also been done.
 
 # Usage
 
@@ -18,6 +19,8 @@ $overlay.scrollableOverlay() // Use this plugin.
 $openIcon.on('click', () => $overlay.trigger('show')) // call when opening your overlay.
 $clostIcon.on('click', () => $overlay.trigger('close')) // call when closing your overlay.
 ```
+
+> Check out the online demo: http://v2js.com/jquery-scrollable-overlay/
 
 
 ## Contributing
