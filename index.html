@@ -53,6 +53,7 @@
 			color: white;
 			overflow: scroll;
 			line-height: 30px;
+			-webkit-overflow-scrolling: touch;
 		}
 
 		#overlay .content {
@@ -162,19 +163,19 @@
 <script src="http://unpkg.com/jquery"></script>
 <script src="./index.js"></script>
 <script>
-	const button = $('#btn')
-	const overlay = $('#overlay')
-	overlay.scrollableOverlay()
+  const button = $('#btn')
+  const overlay = $('#overlay')
+  overlay.scrollableOverlay()
 
-	const close = $('#close')
-	const body = $('body')
-	button.on('click', () => {
-		overlay.trigger('show')
-	})
+  const close = $('#close')
+  const body = $('body')
+  button.on('click', () => {
+    overlay.trigger('show')
+  })
 
-	close.on('click', () => {
-		overlay.trigger('hide')
-	})
+  close.on('click', () => {
+    overlay.trigger('hide')
+  })
 </script>
 </body>
 </html>
