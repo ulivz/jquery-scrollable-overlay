@@ -2,13 +2,13 @@
 	display: none;
 }
 
-body.noscroll {
+body.ios-noscroll {
 	position: fixed;
 	left: 0;
 	right: 0;
 }
 
-.fix-fixed {
-	transform: translateZ(0);
-	-webkit-transform: translateZ(0);
+body.non-ios-noscroll {
+	overflow: hidden;
+	position: relative;
 }

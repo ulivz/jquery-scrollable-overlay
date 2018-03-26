@@ -1,45 +1,58 @@
 'use strict';
 
 (function ($) {
-  var lastWindowScrollTop = 0;
-  var originalOverlayPadding = 0;
 
   function isIPhone() {
-    return /iPhone/.test(navigator.userAgent);
+    return /iPhone/.test(userAgent);
   }
 
   function isPad() {
-    return /iPad/.test(navigator.userAgent);
+    return /iPad/.test(userAgent);
   }
 
+  var lastWindowScrollTop = 0,
+      originalOverlayPaddingBottom = 0,
+      userAgent = navigator.userAgent,
+      $body = $('body'),
+      isIOS = isIPhone() || isPad(),
+      NO_SCROLL_CLASS = isIOS
+          ? 'ios-noscroll'
+          : 'non-ios-noscroll';
+
   function fixedBody() {
-    lastWindowScrollTop = $(window).scrollTop();
-    $('body').addClass('noscroll');
-    $('body').css('top', '-' + lastWindowScrollTop + 'px');
+    if (isIOS) {
+      lastWindowScrollTop = $(window).scrollTop();
+      $body.addClass(NO_SCROLL_CLASS);
+      $body.css('top', '-' + lastWindowScrollTop + 'px');
+    } else {
+      $body.addClass(NO_SCROLL_CLASS);
+    }
   }
 
   function looseBody() {
-    $('body').removeClass('noscroll');
-    $('body').css('top', '');
-    window.scrollTo(0, lastWindowScrollTop);
+    $body.removeClass(NO_SCROLL_CLASS);
+    if (isIOS) {
+      $body.css('top', '');
+      window.scrollTo(0, lastWindowScrollTop);
+    }
   }
 
   $.fn.scrollableOverlay = function () {
     var $this = $(this);
     this.on('show', function () {
       $this.removeClass('hidden');
-      $this.addClass('fix-fixed');
-      originalOverlayPadding = parseInt($this.css('padding-bottom'));
-      // Fix iPad would show navbar(44px) when fixed
-      // Fix iPhone would show navbar(44px) and toolbar(44px) when fixed
-      var tradeOff = isIPhone() ? 88 : isPad() ? 44 : 0;
-      $this.css('padding-bottom', (originalOverlayPadding + tradeOff) + 'px');
+      if (isIOS) {
+        originalOverlayPaddingBottom = parseInt($this.css('padding-bottom'));
+        var tradeOff = isIPhone() ? 88 : isPad() ? 44 : 0;
+        $this.css('padding-bottom', (originalOverlayPaddingBottom + tradeOff) + 'px');
+      }
       fixedBody();
     })
     this.on('hide', function () {
       $this.addClass('hidden');
-      $this.removeClass('fix-fixed');
-      $this.css('padding-bottom', originalOverlayPadding + 'px');
+      if (isIOS) {
+        $this.css('padding-bottom', originalOverlayPaddingBottom + 'px');
+      }
       looseBody();
     })
   };
