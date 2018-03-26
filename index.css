@@ -7,3 +7,8 @@ body.noscroll {
 	left: 0;
 	right: 0;
 }
+
+.fix-fixed {
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+}

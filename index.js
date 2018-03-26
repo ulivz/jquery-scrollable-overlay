@@ -26,9 +26,9 @@
 
   $.fn.scrollableOverlay = function () {
     var $this = $(this);
-    $this.css('-webkit-transform', 'translateZ(0)');
     this.on('show', function () {
       $this.removeClass('hidden');
+      $this.addClass('fix-fixed');
       originalOverlayPadding = parseInt($this.css('padding-bottom'));
       // Fix iPad would show navbar(44px) when fixed
       // Fix iPhone would show navbar(44px) and toolbar(44px) when fixed
@@ -38,6 +38,7 @@
     })
     this.on('hide', function () {
       $this.addClass('hidden');
+      $this.removeClass('fix-fixed');
       $this.css('padding-bottom', originalOverlayPadding + 'px');
       looseBody();
     })
