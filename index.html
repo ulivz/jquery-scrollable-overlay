@@ -44,8 +44,8 @@
 			position: fixed;
 			top: 0;
 			left: 0;
-			width: 100vw;
-			height: 100vh;
+			right: 0;
+			bottom: 0;
 			background-color: rgba(0, 0, 0, .5);
 		}
 
@@ -170,10 +170,12 @@
   const close = $('#close')
   const body = $('body')
   button.on('click', () => {
+    overlay.removeClass('hidden');
     overlay.trigger('show')
   })
 
   close.on('click', () => {
+    overlay.addClass('hidden');
     overlay.trigger('hide')
   })
 </script>
