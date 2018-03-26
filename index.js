@@ -26,6 +26,7 @@
 
   $.fn.scrollableOverlay = function () {
     var $this = $(this);
+    $this.css('-webkit-transform', 'translateZ(0)');
     this.on('show', function () {
       $this.removeClass('hidden');
       originalOverlayPadding = parseInt($this.css('padding-bottom'));
